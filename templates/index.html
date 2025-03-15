@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PDF Splitter</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <div class="container mt-4">
+    <h1 class="text-center mb-4">PDF Splitter</h1>
+
+    <!-- Drag and Drop Area -->
+    <div id="dropZone" class="drop-zone mb-4">
+      <p>Drag & Drop your PDF here or <span class="btn btn-link p-0">Browse</span></p>
+      <input type="file" id="pdfUpload" accept=".pdf" class="d-none">
+    </div>
+
+    <!-- Workspace Area -->
+    <div id="workspace" class="workspace d-none">
+      <h3>Workspace</h3>
+      <div id="pageContainer" class="page-container"></div>
+    </div>
+
+    <!-- Preview Area for Split PDF -->
+    <div id="preview" class="preview d-none">
+      <h3>Split PDF Preview</h3>
+      <div id="previewContainer" class="page-container"></div>
+      <a id="downloadLink" class="btn btn-success mt-2" download="split_output.pdf">Download Split PDF</a>
+    </div>
+
+    <!-- Split Input Modal -->
+    <div id="splitModal" class="modal">
+      <div class="modal-content">
+        <h4>Split PDF</h4>
+        <div class="form-group">
+          <label for="splitStart">Start Page:</label>
+          <input type="number" id="splitStart" class="form-control" min="1">
+        </div>
+        <div class="form-group">
+          <label for="splitEnd">End Page:</label>
+          <input type="number" id="splitEnd" class="form-control" min="1">
+        </div>
+        <button id="confirmSplit" class="btn btn-primary">Split</button>
+        <button id="cancelSplit" class="btn btn-secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
